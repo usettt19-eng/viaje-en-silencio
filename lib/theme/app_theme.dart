@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class AppColors {
   static const cream = Color(0xFFFDFBF7);
@@ -12,13 +11,13 @@ class AppColors {
 
 class AppTheme {
   static TextTheme _text(Color color) => TextTheme(
-        displayLarge: GoogleFonts.lora(fontSize: 32, color: color),
+        displayLarge: TextStyle(fontFamily: 'serif', fontSize: 32, color: color),
         headlineMedium:
-            GoogleFonts.lora(fontSize: 22, fontWeight: FontWeight.w600, color: color),
+            TextStyle(fontFamily: 'serif', fontSize: 22, fontWeight: FontWeight.w600, color: color),
         titleMedium:
-            GoogleFonts.lora(fontSize: 17, fontWeight: FontWeight.w600, color: color),
-        bodyLarge: GoogleFonts.inter(fontSize: 16, height: 1.6, color: color),
-        bodyMedium: GoogleFonts.inter(fontSize: 14, height: 1.5, color: color),
+            TextStyle(fontFamily: 'serif', fontSize: 17, fontWeight: FontWeight.w600, color: color),
+        bodyLarge: TextStyle(fontSize: 16, height: 1.6, color: color),
+        bodyMedium: TextStyle(fontSize: 14, height: 1.5, color: color),
       );
 
   static ThemeData light() => ThemeData(

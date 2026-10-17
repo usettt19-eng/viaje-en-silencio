@@ -9,7 +9,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  google_fonts: ^6.2.1
   share_plus: ^9.0.0
   shared_preferences: ^2.2.3
 

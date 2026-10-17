@@ -31,12 +31,16 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> _load() async {
-    final prefs = await SharedPreferences.getInstance();
-    final raw = prefs.getString(_prefsKey);
-    setState(() {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final raw = prefs.getString(_prefsKey);
       if (raw != null) _progress = Progress.fromJson(raw);
-      _loading = false;
-    });
+    } catch (_) {
+      // Si los datos guardados fallan, se empieza desde el día 1.
+      _progress = const Progress();
+    } finally {
+      if (mounted) setState(() => _loading = false);
+    }
   }
 
   Future<void> _save(Progress p) async {
