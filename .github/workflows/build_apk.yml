@@ -5,6 +5,9 @@ on:
     branches: [main]
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -33,3 +36,12 @@ jobs:
         with:
           name: viaje-en-silencio-apk
           path: build/app/outputs/flutter-apk/app-release.apk
+
+      - name: Publish APK as a GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cp build/app/outputs/flutter-apk/app-release.apk viaje-en-silencio.apk
+          gh release create "v1.0.${{ github.run_number }}" viaje-en-silencio.apk \
+            --title "Viaje en Silencio v1.0.${{ github.run_number }}" \
+            --notes "APK de prueba (firmado con clave de depuración)."
